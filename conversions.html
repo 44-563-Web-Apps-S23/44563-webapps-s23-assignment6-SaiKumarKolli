@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>shows currency conversions</title>
+    </head>
+ 
+<body>
+
+    <h2>Sai Kumar Kolli shows currency conversions</h2>
+
+<form>
+    <label for="form1_age">What is your age </label>
+    <input type ="number" id="form1_age" name="form1_age" min=10 max=50 step=2 value=30> <br>
+
+    <label for="form1_nick">What is your nickname </label>
+    <input type ="text" id="form1_nick" name="form1_nick" autofocus> <br>
+
+    <input type="button" onclick="resolveForm()" value="Get values from form">
+</form>
+
+
+<p id="result">This text will be replaced </p>
+
+<script> 
+
+function resolveForm (){
+    console.log("Getting form values")
+    age = document.getElementById("form1_age").value
+    nick = document.getElementById("form1_nick").value
+    confirmed = confirm("Are these the values? "+age+" and "+nick)
+    
+    out = document.getElementById("result")
+    if(confirmed){
+        out.innerHTML = "Values were confirmed"
+    } else {
+        out.innerHTML = "Values were not confirmed"
+    }
+}
+</script>
+
+<form>
+    <label>
+        <input type="radio" name="operation" value="mean" onClick="chooseOp()"> Average
+    </label>
+    <label>
+        <input type="radio" name="operation" value="maximum" onClick="chooseOp()"> Max
+    </label>
+    <label>
+        <input type="radio" name="operation" value="minimum" onClick="chooseOp()"> Min
+    </label>
+</form>
+
+<p id="result1"></p>
+
+<script>
+    function chooseOp() {
+        const base = parseFloat(document.getElementById("form1_age").value);
+        const conversion = parseFloat(document.getElementById("form1_nick").value);
+        const operation = document.querySelector('input[name="operation"]:checked').value;
+
+        let result1;
+        switch (operation) {
+            case "mean":
+                result1 = (base * conversion / 2)
+                out.innerHTML = "Average of " + base + " and " + conversion + " is " + result1
+                break;
+            case "maximum":
+                if (base > conversion)
+                    result1 = base
+                else
+                    result1 = conversion
+
+                out.innerHTML = "Max of " + base + " and " + conversion + " is " + result1
+                break;
+            case "minimum":
+                if (base < conversion)
+                    result1 = base
+                else
+                    result1 = conversion
+
+                out.innerHTML = "Min of " + base + " and " + conversion + " is " + result1
+                break;
+            default:
+                result1 = "";
+        }
+
+        document.getElementById("result1").innerHTML = `${operation} of ${base} and ${conversion} is ${result1}`;
+    }
+</script>
+
+</body>
+</html> 
