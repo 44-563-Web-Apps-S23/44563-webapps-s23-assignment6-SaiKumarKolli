@@ -3,29 +3,29 @@
  
 <body>
     <title>painters page</title>
-    <h2>Painter entry Saikrishna Ganji</h2>
+    <h2>Painter entry Sai Kumar Kolli</h2>
 
 <h2>Getting input</h2>
 
 <form>
-    <label for="form2_painter">The hidden painter name</label>
-    <input type="password" id="form2_painter" name="form2_painter" value="Monet"><br>
+    <label for="form29_paint">The hidden painter name</label>
+    <input type="password" id="form29_paint" name="form29_paint" value="Monet"><br>
 
 
-    <label for="form2_guess">Guess the painter</label>
-    <input type="text" id="form2_guess" name="form2_guess"><br>
+    <label for="form21_guess">Guess the painter</label>
+    <input type="text" id="form21_guess" name="form21_guess"><br>
 
     <input type="button" onclick="checkPainter()" value="Check the guess">
 </form>
-<p id="results"></p>
+<p id="output"></p>
 <script>
     var good = 0;
     var oops = 0;
     function checkPainter() {
-        painter = document.getElementById("form2_painter").value
-        guess = document.getElementById("form2_guess").value
+        painter = document.getElementById("form29_paint").value
+        guess = document.getElementById("form21_guess").value
 
-        result = document.getElementById("results")
+        result = document.getElementById("output")
         if (painter == guess) {
             good += 1
             alert("You got it right");
@@ -35,8 +35,34 @@
             alert("Sorry");
         }
 
-        document.getElementById("results").innerHTML = "good counts : " + good + " <br> oops counts : " + oops
+        document.getElementById("output").innerHTML = "good counts : " + good + " <br> oops counts : " + oops
 
+    }
+</script>
+
+<div class="container">
+    <img id="pic" src="Kaffir.jpg" height="100" weight="100" onclick="selectImage()">
+</div>
+
+<script>
+    var useImage=1
+    var img=document.getElementById("pic")
+    function selectImage(){
+        switch(useImage){
+            case 1:
+                img.src="Oak.webp"
+                useImage++
+                break
+            case 2:
+                img.src="Arum lily.webp"
+                useImage++
+                break
+            case 3:
+                img.src="Kaffir.jpg"
+                useImage=1
+                break
+            default:
+        }
     }
 </script>
 
